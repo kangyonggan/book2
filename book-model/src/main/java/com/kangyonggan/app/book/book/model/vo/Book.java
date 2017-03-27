@@ -54,6 +54,11 @@ public class Book implements Serializable {
     private String newChapterTitle;
 
     /**
+     * 类型
+     */
+    private String type;
+
+    /**
      * 是否已锁:{0:位锁定,1:已锁定}
      */
     @Column(name = "is_locked")

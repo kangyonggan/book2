@@ -30,6 +30,8 @@ CREATE TABLE book
   COMMENT '最新章节URL',
   new_chapter_title VARCHAR(128)                          NOT NULL                    DEFAULT ''
   COMMENT '最新章节名称',
+  type              VARCHAR(32)                           NOT NULL                    DEFAULT ''
+  COMMENT '类型',
   is_locked         TINYINT                               NOT NULL                    DEFAULT 0
   COMMENT '是否已锁:{0:位锁定,1:已锁定}',
   is_finished       TINYINT                               NOT NULL                    DEFAULT 0
