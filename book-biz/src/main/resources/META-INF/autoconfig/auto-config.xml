@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <group>
+        <!--app-->
+        <property name="book.app.name" description="项目名字" defaultValue="书房"/>
+        <property name="book.app.author" description="项目负责人" defaultValue="康永敢"/>
+        <property name="book.app.name.en" description="项目名字" defaultValue="Book Room"/>
+        <property name="book.app.author.en" description="项目负责人" defaultValue="kangyonggan"/>
+        <property name="book.app.ba.no" description="备案号" defaultValue="皖ICP备16017743号-1"/>
+
+        <!-- redis -->
+        <property name="book.redis.maxTotal" description="redis最大连接数" defaultValue="1000"/>
+        <property name="book.redis.minIdle" description="redis最小等待数" defaultValue="50"/>
+        <property name="book.redis.maxIdle" description="redis最大等待数" defaultValue="100"/>
+        <property name="book.redis.testOnBorrow" description="redis测试支持" defaultValue="true"/>
+        <property name="book.redis.host" description="redis主机ip" defaultValue="127.0.0.1"/>
+        <property name="book.redis.port" description="redis主机端口" defaultValue="6379"/>
+        <property name="book.redis.password" description="redis密码" defaultValue="123456"/>
+        <property name="book.redis.prefix" description="redis的key的前缀" defaultValue="book"/>
+
+        <!--jdbc-->
+        <property name="book.jdbc.driver" description="jdbc驱动" defaultValue="com.mysql.jdbc.Driver"/>
+        <property name="book.jdbc.url" description="jdbc地址" defaultValue="jdbc:mysql://127.0.0.1:3306/book"/>
+        <property name="book.jdbc.username" description="jdbc用户名" defaultValue="root"/>
+        <property name="book.jdbc.password" description="jdbc密码" defaultValue="123456"/>
+
+        <!-- log4j2 -->
+        <property name="book.log4j2.home" description="log4j2日志的文件主目录" defaultValue="/Users/kyg/logs/book"/>
+
+        <property name="book.slow.method.time" description="慢方法时间(秒)" defaultValue="5"/>
+        <property name="book.cache.open" description="是否开启缓存,Y:开启,N:不开启" defaultValue="Y"/>
+    </group>
+    <script>
+        <generate template="app.properties" charset="UTF-8"/>
+        <generate template="messages_en_US.properties" charset="UTF-8"/>
+        <generate template="messages_zh_CN.properties" charset="UTF-8"/>
+        <generate template="applicationContext-datasource.xml" charset="UTF-8"/>
+        <generate template="applicationContext-redis.xml" charset="UTF-8"/>
+        <generate template="log4j2.xml"/>
+    </script>
+</config>

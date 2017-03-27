@@ -1,0 +1,3 @@
+$(function () {
+    $(".sim-page").simPage();
+});
