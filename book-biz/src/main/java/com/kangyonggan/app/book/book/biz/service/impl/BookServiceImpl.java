@@ -1,25 +1,30 @@
 package com.kangyonggan.app.book.book.biz.service.impl;
 
+import com.github.pagehelper.PageHelper;
 import com.kangyonggan.app.book.book.biz.service.BookService;
 import com.kangyonggan.app.book.book.mapper.BookMapper;
+import com.kangyonggan.app.book.book.model.constants.AppConstants;
 import com.kangyonggan.app.book.book.model.vo.Book;
-import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import tk.mybatis.mapper.entity.Example;
+
+import java.util.List;
 
 /**
  * @author kangyonggan
  * @since 2017/3/27
  */
 @Service
-@Log4j2
+@Transactional
 public class BookServiceImpl extends BaseService<Book> implements BookService {
 
     @Autowired
     private BookMapper bookMapper;
 
     @Override
-    public boolean exist(String bookUrl) {
+    public boolean exist(Integer bookUrl) {
         Book book = new Book();
         book.setUrl(bookUrl);
 
@@ -29,6 +34,17 @@ public class BookServiceImpl extends BaseService<Book> implements BookService {
     @Override
     public void saveBook(Book book) {
         super.insertSelective(book);
+    }
+
+    @Override
+    public List<Book> findBooksByPage(int pageNum) {
+        PageHelper.startPage(pageNum, AppConstants.PAGE_SIZE);
+        return bookMapper.selectBooks();
+    }
+
+    @Override
+    public void updateBook(Book book) {
+        super.updateByPrimaryKeySelective(book);
     }
 
 

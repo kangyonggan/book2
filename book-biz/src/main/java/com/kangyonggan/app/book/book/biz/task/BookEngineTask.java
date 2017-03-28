@@ -39,6 +39,7 @@ public class BookEngineTask {
      * cron表达式：* * * * * *（秒 分 时 日 月 星期）
      */
     @Scheduled(cron = "0 0 2 * * *")
+//    @Scheduled(cron = "0/5 * * * * *")
     public void execute() {
         // 判断是否重复执行
         if (isExecuting()) {
@@ -85,12 +86,8 @@ public class BookEngineTask {
                     log.info("书籍【" + book.getName() + (isExist ? "】存在" : "】不存在"));
 
                     if (!isExist) {
-                        try {
-                            bookService.saveBook(book);
-                            log.info("书籍【{}】落库成功", book.getName());
-                        } catch (Exception e) {
-                            log.error("书籍【" + book.getName() + "】落库异常", e);
-                        }
+                        bookService.saveBook(book);
+                        log.info("书籍【{}】落库成功", book.getName());
                     }
                 }
             }
@@ -98,7 +95,7 @@ public class BookEngineTask {
 
         redisService.delete(PropertiesUtil.getProperties("redis.prefix") + ":" + "bookEngine");
         log.info("清除书籍引擎执行标致成功");
-        log.info("书籍引擎已经结束执行...");
+        log.info("书籍引擎已经结束执行！！！");
     }
 
     /**
@@ -106,7 +103,7 @@ public class BookEngineTask {
      *
      * @return
      */
-    public synchronized boolean isExecuting() {
+    public boolean isExecuting() {
         Object bookEngineRedis = redisService.get(PropertiesUtil.getProperties("redis.prefix") + ":" + "bookEngine");
         if (bookEngineRedis == null) {
             return false;
@@ -138,7 +135,7 @@ public class BookEngineTask {
             Book book = new Book();
             book.setPicture(picture);
             book.setName(name);
-            book.setUrl(url);
+            book.setUrl(Integer.parseInt(url));
             book.setIntro(intro);
             book.setAuthor(author);
             book.setType(type);

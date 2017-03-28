@@ -7,11 +7,21 @@
         -->
         <id column="id" property="id" jdbcType="BIGINT"/>
         <result column="title" property="title" jdbcType="VARCHAR"/>
-        <result column="url" property="url" jdbcType="VARCHAR"/>
-        <result column="book_url" property="bookUrl" jdbcType="VARCHAR"/>
+        <result column="url" property="url" jdbcType="INTEGER"/>
+        <result column="book_url" property="bookUrl" jdbcType="INTEGER"/>
         <result column="is_deleted" property="isDeleted" jdbcType="TINYINT"/>
         <result column="created_time" property="createdTime" jdbcType="TIMESTAMP"/>
         <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP"/>
         <result column="content" property="content" jdbcType="LONGVARCHAR"/>
     </resultMap>
+
+    <select id="selectNewChapter" resultMap="BaseResultMap">
+        SELECT title, url
+        FROM chapter
+        <where>
+            book_url = #{bookUrl}
+        </where>
+        ORDER BY url DESC
+        LIMIT 1
+    </select>
 </mapper>

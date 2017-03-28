@@ -10,13 +10,22 @@
         <result column="author" property="author" jdbcType="VARCHAR"/>
         <result column="intro" property="intro" jdbcType="VARCHAR"/>
         <result column="picture" property="picture" jdbcType="VARCHAR"/>
-        <result column="url" property="url" jdbcType="VARCHAR"/>
-        <result column="new_chapter_url" property="newChapterUrl" jdbcType="VARCHAR"/>
+        <result column="url" property="url" jdbcType="INTEGER"/>
+        <result column="new_chapter_url" property="newChapterUrl" jdbcType="INTEGER"/>
         <result column="new_chapter_title" property="newChapterTitle" jdbcType="VARCHAR"/>
-        <result column="book" property="book" jdbcType="VARCHAR"/>
+        <result column="type" property="type" jdbcType="VARCHAR"/>
         <result column="is_finished" property="isFinished" jdbcType="TINYINT"/>
         <result column="is_deleted" property="isDeleted" jdbcType="TINYINT"/>
         <result column="created_time" property="createdTime" jdbcType="TIMESTAMP"/>
         <result column="updated_time" property="updatedTime" jdbcType="TIMESTAMP"/>
     </resultMap>
+
+    <select id="selectBooks" resultMap="BaseResultMap">
+        SELECT id, name, url
+        FROM book
+        <where>
+            is_finished = 0
+            ORDER BY id DESC
+        </where>
+    </select>
 </mapper>

@@ -27,7 +27,7 @@
         <!-- log4j2 -->
         <property name="book.log4j2.home" description="log4j2日志的文件主目录" defaultValue="/Users/kyg/logs/book"/>
 
-        <property name="book.slow.method.time" description="慢方法时间(秒)" defaultValue="5"/>
+        <property name="book.slow.method.time" description="慢方法时间(秒)" defaultValue="2"/>
         <property name="book.cache.open" description="是否开启缓存,Y:开启,N:不开启" defaultValue="Y"/>
     </group>
     <script>

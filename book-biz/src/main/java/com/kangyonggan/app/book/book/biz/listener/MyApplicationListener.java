@@ -23,5 +23,7 @@ public class MyApplicationListener implements ApplicationListener {
     public void onApplicationEvent(ApplicationEvent applicationEvent) {
         redisService.delete(PropertiesUtil.getProperties("redis.prefix") + ":" + "bookEngine");
         log.info("清除书籍引擎执行标致成功");
+        redisService.delete(PropertiesUtil.getProperties("redis.prefix") + ":" + "chapterEngine");
+        log.info("清除章节引擎执行标致成功");
     }
 }

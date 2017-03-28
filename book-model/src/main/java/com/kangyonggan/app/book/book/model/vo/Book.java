@@ -39,13 +39,13 @@ public class Book implements Serializable {
     /**
      * 地址
      */
-    private String url;
+    private Integer url;
 
     /**
      * 最新章节URL
      */
     @Column(name = "new_chapter_url")
-    private String newChapterUrl;
+    private Integer newChapterUrl;
 
     /**
      * 最新章节名称

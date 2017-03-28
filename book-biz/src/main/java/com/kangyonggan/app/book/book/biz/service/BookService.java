@@ -2,6 +2,8 @@ package com.kangyonggan.app.book.book.biz.service;
 
 import com.kangyonggan.app.book.book.model.vo.Book;
 
+import java.util.List;
+
 /**
  * @author kangyonggan
  * @since 2017/3/27
@@ -14,7 +16,7 @@ public interface BookService {
      * @param bookUrl
      * @return
      */
-    boolean exist(String bookUrl);
+    boolean exist(Integer bookUrl);
 
     /**
      * 保存书籍
@@ -23,4 +25,18 @@ public interface BookService {
      */
     void saveBook(Book book);
 
+    /**
+     * 分页查找书籍
+     *
+     * @param pageNum
+     * @return
+     */
+    List<Book> findBooksByPage(int pageNum);
+
+    /**
+     * 更新书籍
+     *
+     * @param book
+     */
+    void updateBook(Book book);
 }

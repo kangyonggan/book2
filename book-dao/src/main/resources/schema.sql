@@ -24,9 +24,9 @@ CREATE TABLE book
   COMMENT '简介',
   picture           VARCHAR(256)                          NOT NULL                    DEFAULT ''
   COMMENT '首图',
-  url               VARCHAR(128)                          NOT NULL
+  url               INTEGER                               NOT NULL
   COMMENT '地址',
-  new_chapter_url   VARCHAR(64)                           NOT NULL                    DEFAULT ''
+  new_chapter_url   INTEGER                               NOT NULL                    DEFAULT 0
   COMMENT '最新章节URL',
   new_chapter_title VARCHAR(128)                          NOT NULL                    DEFAULT ''
   COMMENT '最新章节名称',
@@ -63,9 +63,9 @@ CREATE TABLE chapter
   COMMENT '章节名称',
   content      LONGTEXT                              NOT NULL
   COMMENT '章节内容',
-  url          VARCHAR(128)                          NOT NULL
+  url          INTEGER                               NOT NULL
   COMMENT '章节地址',
-  book_url     VARCHAR(128)                          NOT NULL
+  book_url     INTEGER                               NOT NULL
   COMMENT '书籍地址',
   is_deleted   TINYINT                               NOT NULL                    DEFAULT 0
   COMMENT '逻辑删除:{0:未删除, 1:已删除}',
