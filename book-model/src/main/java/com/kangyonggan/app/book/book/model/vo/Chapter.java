@@ -32,12 +32,6 @@ public class Chapter implements Serializable {
     private String bookUrl;
 
     /**
-     * 是否已锁:{0:位锁定,1:已锁定}
-     */
-    @Column(name = "is_locked")
-    private Byte isLocked;
-
-    /**
      * 逻辑删除:{0:未删除, 1:已删除}
      */
     @Column(name = "is_deleted")

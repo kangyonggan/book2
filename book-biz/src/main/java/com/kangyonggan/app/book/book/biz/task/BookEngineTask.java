@@ -133,7 +133,7 @@ public class BookEngineTask {
             Elements info = bookElement.select(".result-game-item-info .result-game-item-info-tag");
             String author = info.get(0).select("span").get(1).text().trim();
             String type = info.get(1).select("span").get(1).text().trim();
-            String newChapterTitle = info.get(3).select("a").get(0).text().trim();
+//            String newChapterTitle = info.get(3).select("a").get(0).text().trim();
 
             Book book = new Book();
             book.setPicture(picture);
@@ -142,8 +142,8 @@ public class BookEngineTask {
             book.setIntro(intro);
             book.setAuthor(author);
             book.setType(type);
-            book.setNewChapterTitle(newChapterTitle);
-            book.setNewChapterUrl(null);
+//            book.setNewChapterTitle(newChapterTitle);
+//            book.setNewChapterUrl(null);
 
             return book;
         } catch (Exception e) {

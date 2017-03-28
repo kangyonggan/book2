@@ -59,12 +59,6 @@ public class Book implements Serializable {
     private String type;
 
     /**
-     * 是否已锁:{0:位锁定,1:已锁定}
-     */
-    @Column(name = "is_locked")
-    private Byte isLocked;
-
-    /**
      * 是否完结:{0:未完结, 1:已完结}
      */
     @Column(name = "is_finished")
