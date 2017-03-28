@@ -2,11 +2,13 @@
 <Configuration status="WARN" monitorInterval="300">
     <Appenders>
         <Console name="Console" target="SYSTEM_OUT">
-            <PatternLayout pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%logger{36}.%t:%L] - %msg%n"/>
+            <!--<PatternLayout pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%logger{36}.%t:%L] - %msg%n"/>-->
+            <PatternLayout pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%logger{36}.%t:%L] - %replace{%msg}{==> Parameters: [\s\S]+\(String\)}{==> Parameters: 内容省略}%n"/>
         </Console>
         <RollingRandomAccessFile name="AllFile" fileName="${book.log4j2.home}/all.log"
                                  filePattern="${book.log4j2.home}/all-%d{yyyy-MM-dd}-%i.log">
-            <PatternLayout pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%logger{36}.%t:%L] - %msg%n"/>
+            <!--<PatternLayout pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%logger{36}.%t:%L] - %msg%n"/>-->
+            <PatternLayout pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%logger{36}.%t:%L] - %replace{%msg}{==> Parameters: [\s\S]+\(String\)}{==> Parameters: 内容省略}%n"/>
             <Policies>
                 <TimeBasedTriggeringPolicy interval="1"/>
                 <SizeBasedTriggeringPolicy size="500 MB"/>
@@ -19,7 +21,8 @@
         </RollingRandomAccessFile>
         <RollingRandomAccessFile name="ErrorFile" fileName="${book.log4j2.home}/error.log"
                                  filePattern="${book.log4j2.home}/error-%d{yyyy-MM-dd}-%i.log">
-            <PatternLayout pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%logger{36}.%t:%L] - %msg%n"/>
+            <!--<PatternLayout pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%logger{36}.%t:%L] - %msg%n"/>-->
+            <PatternLayout pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%logger{36}.%t:%L] - %replace{%msg}{==> Parameters: [\s\S]+\(String\)}{==> Parameters: 内容省略}%n"/>
             <Policies>
                 <TimeBasedTriggeringPolicy interval="1"/>
                 <SizeBasedTriggeringPolicy size="500 MB"/>
