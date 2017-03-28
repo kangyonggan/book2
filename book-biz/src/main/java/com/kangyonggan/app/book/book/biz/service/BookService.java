@@ -9,11 +9,6 @@ import com.kangyonggan.app.book.book.model.vo.Book;
 public interface BookService {
 
     /**
-     * 开始爬去书籍
-     */
-    void execute();
-
-    /**
      * 判断书籍是否已经存在
      *
      * @param bookUrl
